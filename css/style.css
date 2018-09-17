@@ -1,0 +1,49 @@
+body {
+  padding-top: 50px;
+  background: #12282e;
+  color: rgb(252, 252, 252);
+}
+.container h2{
+  font-size: 33px;
+}
+
+.progress {
+  text-align: center;
+  border:2px solid #fff;
+  height: 40px;
+  margin-top: 5px;
+}
+#row div{
+  background-color:rgb(16, 16, 34);
+  height: 40px;
+  text-align: center; 
+  margin: 0;
+  padding: 5px;
+  font-size: 20px
+}
+
+.progress a {
+	display: block;
+	text-align: center;
+	text-decoration: none;
+	color: #ffffff;
+	font-weight: bold;
+  font-size: 18px;
+  padding-top: 3px;
+	
+}
+
+.progress a:hover{
+	color:rgb(224, 236, 115);
+}
+#navbar .btn-group{
+  padding: 5px;
+  margin-top: 5px;
+}
+#navbar .btn button{
+  padding: 5px;
+  margin-top: 5px;
+}
+.yellow-text{
+  color: yellow;
+}

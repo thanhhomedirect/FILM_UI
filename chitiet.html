@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Phim Mới | Phim hay | Xem phim nhanh | Xem phim online | Phim HD vietsub hay nhất</title>
+    <!-- <script src="js/demo1.js"></script> -->
+
+    <!-- Bootstrap core CSS -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+    <script type="text/javascript">
+    var GET = window.location.search.substring(1);
+    var data = null;
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+    xhr.open('GET', 'https://ghibliapi.herokuapp.com/films', true);
+ 
+    xhr.onload = function () {
+      // begin accessing JSON data here
+      var data = JSON.parse(this.response);
+      if (xhr.status >= 200 && xhr.status < 400) {
+        info(data[GET-1].url);
+          } else {
+          console.log('error');
+        }
+      }
+      xhr.send();
+    function info(link){
+      var data = null;
+      var xhr = new XMLHttpRequest();
+      xhr.withCredentials = true;
+
+      xhr.addEventListener("readystatechange", function () {
+      table= document.getElementById('info-table');
+      var string;
+      if (this.readyState === 4) {
+        console.log(this.response);
+        var datafilm = JSON.parse(this.response);
+        var row = table.insertRow(1);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        var cell4 = row.insertCell(3);
+        var cell5 = row.insertCell(4);
+        var cell6 = row.insertCell(5);
+        cell1.innerHTML = datafilm.title;
+        cell2.innerHTML = datafilm.description;
+        cell3.innerHTML = datafilm.director;
+        cell4.innerHTML = datafilm.producer;
+        cell5.innerHTML = datafilm.release_date;
+        cell6.innerHTML = datafilm.rt_score;
+
+      } });
+      xhr.open("GET",link);
+      xhr.setRequestHeader("Cache-Control", "no-cache");
+      xhr.setRequestHeader("Postman-Token", "cca57728-002c-0e7d-2613-d93386af19e4");
+
+      xhr.send(data);
+      }
+    </script>
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#"><strong><em>PHIMHAY<span class="yellow-text">.NET</span></em></strong></a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse navbar-right">
+          <div class="form-group" style="float: left; margin: 5px; margin-top: 10px; display: block;">
+            <input type="text" name="search" class="form-control" id="usr" placeholder="Search...">
+          </div>
+          <button type="submit" class="btn btn-warning" name="search">
+              <span class="glyphicon glyphicon-search"></span> Search
+            </button>
+          <div class="btn-group">
+            <button type="button" class="btn btn-info">Đăng ký</button>
+            <button type="button" class="btn btn-info">Đăng nhập</button>
+          </div>
+          <div class="btn">
+            <button type="button" class="btn btn-primary">Đăng nhập bằng Facebook</button>
+          </div>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container" style="background: rgb(17, 20, 18);">
+      <div class="progress">
+        <div id="row" class="row">
+          <div class="col-sm-2"><a href="demo1.html"><strong>PHIM MỚI</strong></a></div>
+          <div class="col-sm-2"><a href="#"><strong>THỂ LOẠI</strong></a></div>
+          <div class="col-sm-2"><a href="#"><strong>QUỐC GIA</strong></a></div>
+          <div class="col-sm-2"><a href="#"><strong>PHIM LẺ</strong></a></div>
+          <div class="col-sm-2"><a href="#"><strong>PHIM BỘ</strong></a></div>
+          <div class="col-sm-2"><a href="#"><strong>TOP PHIM 2018</strong></a></div>
+        </div>
+      </div>
+
+      <h2 class="page-header">Top Trending</h2>
+
+
+      <div>
+        <table id="info-table" class="table table-bodered">
+         <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Director</th>
+          <th>Producer</th>
+          <th>Release Date</th>
+          <th>Rating Score</th>
+        </tr>
+      </table>
+      </div>
+    </div>
+  
+    <script src="js/bootstrap.js"></script>
+  </body>
+</html>
